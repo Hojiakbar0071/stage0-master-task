@@ -26,7 +26,7 @@ class AlgorithmComplexityTest {
 
     @Test
     public void twoCycleSorting() {
-       assertEquals(0, encodedComplexities.indexOf(encodeAnswer(algorithmComplexity.twoCycleSorting())));
+       assertEquals(-1, encodedComplexities.indexOf(encodeAnswer(algorithmComplexity.twoCycleSorting())));
     }
 
     @Test

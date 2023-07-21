@@ -8,5 +8,5 @@ public enum Complexity {
     O_2_N,
     O_N_LOG_N,
     O_1,
-    O_N
+    UNKNOWN, O_N
 }
