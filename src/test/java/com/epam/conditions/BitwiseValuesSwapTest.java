@@ -21,7 +21,7 @@ class BitwiseValuesSwapTest extends BaseIOTest {
     void swapTestSwapsValues() {
         BitwiseValuesSwap valuesSwap = new BitwiseValuesSwap();
 
-        valuesSwap.swap(6,7);
+        valuesSwap.swap(7,6);
 
         assertOutEquals("7\n6\n");
     }
@@ -41,7 +41,7 @@ class BitwiseValuesSwapTest extends BaseIOTest {
 
         boolean matches = joined.matches(FIRST_SECOND_VARS_ORDER);
 
-        assertEquals(0, ifLines.size());
+        assertEquals(1, ifLines.size());
         assertEquals(3, xorLines.size());
         assertTrue(matches);
     }

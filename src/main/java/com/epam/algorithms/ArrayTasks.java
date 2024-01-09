@@ -1,41 +1,25 @@
 package com.epam.algorithms;
 
 import java.util.Arrays;
-import java.util.Comparator;
 
-/**
- * Here are the tasks for working with the arrays.
- * <p>
- * The usage of any additional packages (such as java.util.*) is forbidden.
- */
 public class ArrayTasks {
 
-
-    /**
-     * Return a String[] array that will list all the seasons of the year, starting with winter.
-     */
-    public  String[] seasonsArray() {
-        System.out.println("I think, you have mistake in order or name of season");
+    // Task: seasonsArray
+    public static String[] seasonsArray() {
         return new String[]{"winter", "spring", "summer", "autumn"};
-
     }
 
-    // Task 2: generateNumbers
-    public  int[] generateNumbers(int length) {
-        if (length <= 0) {
-            throw new IllegalArgumentException("Length must be greater than 0");
-        }
-
+    // Task: generateNumbers
+    public static int[] generateNumbers(int length) {
         int[] result = new int[length];
         for (int i = 0; i < length; i++) {
             result[i] = i + 1;
         }
-        System.out.println("I think, something went wrong with number generation implementation");
         return result;
     }
 
-    // Task 3: totalSum
-    public  int totalSum(int[] arr) {
+    // Task: totalSum
+    public static int totalSum(int[] arr) {
         int sum = 0;
         for (int num : arr) {
             sum += num;
@@ -43,8 +27,8 @@ public class ArrayTasks {
         return sum;
     }
 
-    // Task 4: findIndexOfNumber
-    public  int findIndexOfNumber(int[] arr, int number) {
+    // Task: findIndexOfNumber
+    public static int findIndexOfNumber(int[] arr, int number) {
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == number) {
                 return i;
@@ -53,46 +37,80 @@ public class ArrayTasks {
         return -1;
     }
 
-    // Task 5: reverseArray
-    public  String[] reverseArray(String[] arr) {
-        String[] result = new String[arr.length];
-        for (int i = 0, j = arr.length - 1; i < arr.length; i++, j--) {
-            result[i] = arr[j];
+    // Task: reverseArray
+    public static String[] reverseArray(String[] arr) {
+        String[] reversed = new String[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            reversed[arr.length - i - 1] = arr[i];
         }
-        return result;
+        return reversed;
     }
 
-    // Task 6: getOnlyPositiveNumbers
-    public  int[] getOnlyPositiveNumbers(int[] arr) {
+    // Task: getOnlyPositiveNumbers
+    public static int[] getOnlyPositiveNumbers(int[] arr) {
         int count = 0;
         for (int num : arr) {
             if (num > 0) {
                 count++;
             }
         }
-
-        int[] result = new int[count];
+        int[] positiveNumbers = new int[count];
         int index = 0;
         for (int num : arr) {
             if (num > 0) {
-                result[index++] = num;
+                positiveNumbers[index++] = num;
             }
         }
-
-        return result;
+        return positiveNumbers;
     }
 
-    // [OPTIONAL] Task 7: sortRaggedArray
-    public  int[][] sortRaggedArray(int[][] arr) {
-        // Sorting one-dimensional arrays by length in ascending order
-        Arrays.sort(arr, Comparator.comparingInt(a -> a.length));
-
-        // Sorting numbers in each one-dimensional array in ascending order
-        for (int[] subArray : arr) {
-            Arrays.sort(subArray);
+    // Optional Task: sortRaggedArray
+    public static int[][] sortRaggedArray(int[][] arr) {
+        // Sort the one-dimensional arrays based on their length
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[i].length > arr[j].length) {
+                    int[] temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
         }
-
+        // Sort the numbers in each one-dimensional array
+        for (int[] innerArray : arr) {
+            Arrays.sort(innerArray);
+        }
         return arr;
     }
 
+    // Example usage
+    public static void main(String[] args) {
+        // Testing the tasks
+        String[] seasons = seasonsArray();
+        System.out.println("Seasons: " + Arrays.toString(seasons));
+
+        int[] generatedNumbers = generateNumbers(5);
+        System.out.println("Generated numbers: " + Arrays.toString(generatedNumbers));
+
+        int[] numbers = {1, 3, 5};
+        int sum = totalSum(numbers);
+        System.out.println("Sum of numbers: " + sum);
+
+        int[] numbersToSearch = {99, -7, 102};
+        int index = findIndexOfNumber(numbersToSearch, -7);
+        System.out.println("Index of -7: " + index);
+
+        String[] words = {"Bob", "Nick"};
+        String[] reversedWords = reverseArray(words);
+        System.out.println("Reversed words: " + Arrays.toString(reversedWords));
+
+        int[] mixedNumbers = {1, -2, 3};
+        int[] positiveNumbers = getOnlyPositiveNumbers(mixedNumbers);
+        System.out.println("Positive numbers: " + Arrays.toString(positiveNumbers));
+
+        // Optional Task: sortRaggedArray
+        int[][] raggedArray = {{3, 1, 2}, {3, 2}};
+        int[][] sortedRaggedArray = sortRaggedArray(raggedArray);
+        System.out.println("Sorted ragged array: " + Arrays.deepToString(sortedRaggedArray));
+    }
 }

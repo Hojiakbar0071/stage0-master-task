@@ -27,7 +27,7 @@ public class ArrayTasksTest {
 
     private static final Random RANDOM = new Random();
 
-    private final ArrayTasks arrayTasks = new ArrayTasks();
+    private static ArrayTasks arrayTasks = new ArrayTasks();
 
     private static List<String> notAllowedStrings;
 
