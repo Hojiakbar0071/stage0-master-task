@@ -13,7 +13,7 @@ public class IntegerDivider {
             } else if (quotient != 0) {
                 System.out.println("cannot be divided completely");
             }else {
-                System.out.println("division by zero");
+                System.out.println("division by zero\n");
             }
         }
     }
